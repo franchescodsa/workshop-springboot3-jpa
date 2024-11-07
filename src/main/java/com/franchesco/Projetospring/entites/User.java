@@ -2,10 +2,24 @@ package com.franchesco.Projetospring.entites;
 
 import java.io.Serializable;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity //Indica que esta classe é uma entidade JPA, ou seja, será mapeada para uma tabela no banco de dados.
+@Table(name= "tb_user")
+
 public class User  implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
+	@Id //Marca o campo como chave primária da tabela.
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//Define a estratégia de geração automática do valor da chave primária. Aqui, GenerationType.
+	//IDENTITY indica que o banco de dados gerará o valor do identificador automaticamente, 
+	//geralmente utilizado com campos de auto incremento.
 	private Long id;
 	private String name;
 	private String email;
