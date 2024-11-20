@@ -113,6 +113,14 @@ Isso é útil para gerenciar a persistência de objetos relacionados sem precisa
 	public Set<OrderItem> getItems() {
         return items;
     }
+	
+	public Double getTotal() {
+		double sum= 0.0;
+		for(OrderItem x : items) {
+			sum += x.getSubTotal();
+		}
+		return sum;
+	}
 
 	@Override
 	public int hashCode() {
