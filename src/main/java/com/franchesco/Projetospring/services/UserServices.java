@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.franchesco.Projetospring.entites.User;
 import com.franchesco.Projetospring.repositories.UserRepository;
+import com.franchesco.Projetospring.services.exceptions.ResourceNotFoundException;
 
 @Service /*A anotação @Service indica ao Spring que essa classe é um componente de serviço. 
 Isso permite que ela seja gerenciada pelo Spring e injetada em outros componentes onde necessário.*/
@@ -26,7 +27,7 @@ public class UserServices {
 	
 	public User finById(Long id) {
 		Optional<User> obj = repository.findById(id);
-		return obj.get();
+		return obj.orElseThrow(()-> new ResourceNotFoundException(id));
 	}
 	
 	//Inseri no banco de dados
